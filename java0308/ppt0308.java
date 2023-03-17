@@ -1,5 +1,6 @@
 package java0308;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ public class ppt0308 {
 		// TODO Auto-generated method stub
 //        P6();
 //        P7();
-        P8();
+		P8();
 //        P11();
 //        P12();
 //        P13();
@@ -71,11 +72,11 @@ public class ppt0308 {
 		int year1 = 0;
 		int month1 = 0;
 		int day1 = 0;
-		
+
 		int year2 = 0;
 		int month2 = 0;
 		int day2 = 0;
-		
+
 		for (int i = 0; i < 2; i++) {
 			String input = scanner.next();
 			if (i == 0) {
@@ -91,39 +92,39 @@ public class ppt0308 {
 		}
 		LocalDate date1 = LocalDate.of(year1, month1, day1);
 		LocalDate date2 = LocalDate.of(year2, month2, day2);
-		
+
 		Period result = Period.between(date1, date2);
-		
-		System.out.printf("두 날짜 사이 기간: %d년 %d월 %d일",
-				result.getYears(), result.getMonths(), result.getDays()-1);
+
+		System.out.printf("두 날짜 사이 기간: %d년 %d월 %d일", result.getYears(), result.getMonths(), result.getDays() - 1);
 	}
 
+	
+	// P8 Calendar Application III
+	// 완료
 	public static void P8() {
-//		System.out.println("User inputs the dates >>>  yyyy-MM-dd ");
-//		String input = scanner.next();
-//		
-//		int year = Integer.parseInt(input.substring(0, 4));;
-//		int month = Integer.parseInt(input.substring(4, 6)) - 1;
-//		int day = Integer.parseInt(input.substring(6, 8));
-//
-//		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
-//		Calendar cal = Calendar.getInstance();
-//		Date dt = dtFormat.parse(day);
-//        
-//		cal.setTime(dt);
-//        
-//		cal.add(Calendar.YEAR,  year);
-//		cal.add(Calendar.MONTH, month);
-//		cal.add(Calendar.DATE,  day);
-//        
-//		return dtFormat.format(cal.getTime());
-//		
-//		
-//		System.out.println("User input Plus date Number >>> ");
-//		int plus = scanner.nextInt();
-//		LocalDate date1 = LocalDate.of(year, month, day1);
+		System.out.println("User inputs the dates >>>  yyyy-MM-dd ");
+		String input = scanner.next();
+		System.out.println("User input Plus date Number >>> ");
+		int plus = scanner.nextInt();
+		
+		int year = Integer.parseInt(input.substring(0, 4));
+		int month = Integer.parseInt(input.substring(4, 6)) - 1;
+		int day = Integer.parseInt(input.substring(6, 8));
+		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
+		
+		cal.set(year,month,day);
+
+		cal.add(cal.DAY_OF_MONTH, plus);
+		
+		Date result = new Date(cal.getTimeInMillis());
+
+		System.out.println(Format.format(result));
+		
 	}
 
+	
 	// P11 Currency Converter 환율 계산기
 	// 완료
 	public static void P11() {
