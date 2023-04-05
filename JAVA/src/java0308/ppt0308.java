@@ -19,10 +19,10 @@ public class ppt0308 {
 		// TODO Auto-generated method stub
 //        P6();
 //        P7();
-		P8();
+//		P8();
 //        P11();
 //        P12();
-//        P13();
+		P13();
 //        P14();
 //        P15();
 //        A1();
@@ -98,7 +98,6 @@ public class ppt0308 {
 		System.out.printf("두 날짜 사이 기간: %d년 %d월 %d일", result.getYears(), result.getMonths(), result.getDays() - 1);
 	}
 
-	
 	// P8 Calendar Application III
 	// 완료
 	public static void P8() {
@@ -106,25 +105,24 @@ public class ppt0308 {
 		String input = scanner.next();
 		System.out.println("User input Plus date Number >>> ");
 		int plus = scanner.nextInt();
-		
+
 		int year = Integer.parseInt(input.substring(0, 4));
 		int month = Integer.parseInt(input.substring(4, 6)) - 1;
 		int day = Integer.parseInt(input.substring(6, 8));
-		
+
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat Format = new SimpleDateFormat("yyyyMMdd");
-		
-		cal.set(year,month,day);
+
+		cal.set(year, month, day);
 
 		cal.add(cal.DAY_OF_MONTH, plus);
-		
+
 		Date result = new Date(cal.getTimeInMillis());
 
 		System.out.println(Format.format(result));
-		
+
 	}
 
-	
 	// P11 Currency Converter 환율 계산기
 	// 완료
 	public static void P11() {
@@ -190,25 +188,30 @@ public class ppt0308 {
 	// P13 Extracting Word from String 문자열 추출 -> 'cool' 단어 갯수 찾기
 	// 완료
 	public static void P13() {
-		ArrayList<String> listA = new ArrayList<String>();
+		String list = "";
 
 		String word = scanner.nextLine();
-		for (int i = 0; i < word.length(); i++) {
-			if (word.charAt(i) == 'o' || word.charAt(i) == 'c' || word.charAt(i) == 'l') {
-				listA.add(word.substring(i, i + 1));
-			}
-		}
-		System.out.println(listA);
-
-		int count = 0;
-		for (int i = 0; i < listA.size(); i++) {
-			if (listA.get(i).equals("c")) {
-				if (listA.get(i + 1).equals("o") && listA.get(i + 2).equals("o") && listA.get(i + 3).equals("l")) {
+		String findword = scanner.nextLine();
+		for (char i : word.toCharArray()) {
+			for (char j : findword.toCharArray())
+				if (i == j) {
+					list = list + Character.toString(i);
+					break;
 				}
-				count++;
+		}
+		System.out.println(list);
+
+		int indexcount = 0;
+		for (int i = 0; i < list.length(); i++) {
+			if(list.substring(i, i+findword.length()).equals(findword)) {
+				indexcount++;
+			}
+			if(i == list.length()-findword.length()) {
+				break;
 			}
 		}
-		System.out.println(count);
+		
+		System.out.println(indexcount);
 
 	}
 
